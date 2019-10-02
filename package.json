@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-gcn",
-  "description": "A starter template to build amazing static websites with Gatsby, Contentful and Netlify",
-  "version": "2.0.6",
-  "repository": "https://github.com/ryanwiemer/gatsby-starter-gcn",
-  "author": "Ryan Wiemer <ryan@ryanwiemer.com>",
+  "name": "ee-jobs",
+  "description": "English jobs for Japanese developers",
+  "version": "1.0.0",
+  "repository": "https://en-jobs.yabaiwebyasan.com/",
+  "author": "Yuki Hirai <yukihirai0505@gmail.com>",
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.1",
     "chalk": "^2.4.2",
