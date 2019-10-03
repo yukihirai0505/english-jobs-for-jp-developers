@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import BlankLink from './BlankLink'
 
 const Wrapper = styled.footer`
   display: flex;
@@ -45,13 +46,10 @@ const Footer = () => (
   <Wrapper>
     <List>
       <Item>
-        <a
-          href="https://github.com/yabaiwebyasan"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          @yabaiwebyasan
-        </a>
+        <BlankLink
+          href="https://twitter.com/yabaiwebyasan"
+          text="@yabaiwebyasan"
+        />
       </Item>
     </List>
   </Wrapper>

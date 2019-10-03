@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import BlankLink from './BlankLink'
 
 const Wrapper = styled.div`
   margin: 0 auto 2em;
@@ -31,9 +32,12 @@ const PostDetails = props => {
       <Date>📅 {props.date}</Date>
       <span>•</span>
       <ReadingTime>{`⏱️${props.timeToRead} min read `}</ReadingTime>
-      <EnglishLevel>🗽English Level: {new Array(props.englishLevel).fill(undefined).map((_) => "⭐️")}</EnglishLevel>
+      <EnglishLevel>
+        🗽English Level:{' '}
+        {new Array(props.englishLevel).fill(undefined).map(_ => '⭐️')}
+      </EnglishLevel>
       <CorporateUrl>
-        <a href={props.corporateUrl}>公式サイトリンク</a>
+        <BlankLink href={props.corporateUrl} text="公式サイトリンク" />
       </CorporateUrl>
     </Wrapper>
   )
