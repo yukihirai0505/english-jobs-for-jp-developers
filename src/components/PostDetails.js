@@ -17,12 +17,24 @@ const ReadingTime = styled.p`
   display: inline-block;
 `
 
+const EnglishLevel = styled.p`
+  margin: 0.5em 0 0;
+`
+
+const CorporateUrl = styled.p`
+  margin: 1em 0 0;
+`
+
 const PostDetails = props => {
   return (
     <Wrapper>
       <Date>📅 {props.date}</Date>
       <span>•</span>
       <ReadingTime>{`⏱️${props.timeToRead} min read `}</ReadingTime>
+      <EnglishLevel>🗽English Level: {props.englishLevel}</EnglishLevel>
+      <CorporateUrl>
+        <a href={props.corporateUrl}>公式サイトリンク</a>
+      </CorporateUrl>
     </Wrapper>
   )
 }
