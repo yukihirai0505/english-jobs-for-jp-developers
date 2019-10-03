@@ -37,11 +37,16 @@ const Post = styled.li`
   }
 `
 
-const Title = styled.h2`
-  font-size: 1.5em;
+const EnglishLevel = styled.h2`
+  font-size: 1.2em;
   font-weight: 600;
   text-transform: capitalize;
   margin: 1rem 1rem 0.5rem 1rem;
+`
+
+const DetailMessage = styled.span`
+  font-size: 0.8em;
+  color: gray;
 `
 
 const Date = styled.h3`
@@ -60,7 +65,9 @@ const Excerpt = styled.p`
 `
 
 const Card = ({
+  hasDetail,
   slug,
+  englishLevel,
   heroImage,
   title,
   publishDate,
@@ -74,7 +81,10 @@ const Card = ({
     <Post featured={props.featured}>
       <Link to={`/${slug}/`}>
         <Img fluid={heroImage.fluid} backgroundColor={'#eeeeee'} />
-        <Title>{title}</Title>
+        <EnglishLevel>
+          英語レベル {new Array(englishLevel).fill(undefined).map(_ => '⭐️')}{' '}
+          {hasDetail && <DetailMessage>(詳細情報有)</DetailMessage>}
+        </EnglishLevel>
         <Date>{publishDate}</Date>
         <ReadingTime>{timeToRead} min read</ReadingTime>
         <Excerpt

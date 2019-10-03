@@ -55,7 +55,9 @@ export const query = graphql`
         node {
           title
           id
+          hasDetail
           slug
+          englishLevel
           publishDate(formatString: "MMMM DD, YYYY")
           heroImage {
             title
