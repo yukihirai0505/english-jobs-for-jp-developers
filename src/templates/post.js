@@ -19,6 +19,9 @@ const PostTemplate = ({ data, pageContext }) => {
     body,
     publishDate,
     tags,
+    englishLevel,
+    corporateUrl,
+    jobUrls
   } = data.contentfulPost
   const postNode = data.contentfulPost
 
@@ -39,6 +42,9 @@ const PostTemplate = ({ data, pageContext }) => {
         <PostDetails
           date={publishDate}
           timeToRead={body.childMarkdownRemark.timeToRead}
+          englishLevel={englishLevel}
+          corporateUrl={corporateUrl}
+          jobUrls={jobUrls}
         />
         <PageBody body={body} />
       </Container>
@@ -51,7 +57,15 @@ export const query = graphql`
   query($slug: String!) {
     contentfulPost(slug: { eq: $slug }) {
       title
+      hasDetail
       slug
+      corporateUrl
+      jobUrls
+      englishLevel
+      location {
+        lat
+        lon
+      }
       metaDescription {
         internal {
           content

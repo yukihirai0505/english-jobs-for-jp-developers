@@ -5,8 +5,8 @@ module.exports = {
   siteDescription:
     'エンジニア向け英語が使える求人まとめサイト。仕事で英語が使えるWEB系エンジニア向けの求人をまとめています。',
   siteUrl: 'https://en-jobs.yabaiwebyasan.com/',
-  postsPerHomePage: 7,
-  postsPerPage: 6,
+  postsPerHomePage: 16,
+  postsPerPage: 15,
   author: 'ヤバイWEB屋さん',
   authorUrl: 'https://en-jobs.yabaiwebyasan.com/about',
   userTwitter: '@yabaiwebyasan',
