@@ -26,19 +26,30 @@ const CorporateUrl = styled.p`
   margin: 1em 0 0;
 `
 
-const PostDetails = props => {
+const JobUrl = styled.p`
+  display: inline-block;
+  margin: 1em 1em 0 0;
+`
+
+const PostDetails = ({date, timeToRead, englishLevel, corporateUrl, jobUrls}) => {
   return (
     <Wrapper>
-      <Date>📅 {props.date}</Date>
+      <Date>📅 {date}</Date>
       <span>•</span>
-      <ReadingTime>{`⏱️${props.timeToRead} min read `}</ReadingTime>
+      <ReadingTime>{`⏱️${timeToRead} min read `}</ReadingTime>
       <EnglishLevel>
         🗽English Level:{' '}
-        {new Array(props.englishLevel).fill(undefined).map(_ => '⭐️')}
+        {new Array(englishLevel).fill(undefined).map(_ => '⭐️')}
       </EnglishLevel>
       <CorporateUrl>
-        <BlankLink href={props.corporateUrl} text="公式サイトリンク" />
+        <BlankLink href={corporateUrl} text="公式サイトリンク" />
       </CorporateUrl>
+      {jobUrls &&
+        jobUrls.map((jobUrl, key) => (
+          <JobUrl key={key}>
+            <BlankLink href={jobUrl} text={`求人リンク${jobUrls.length > 1 ? key + 1: ''}`} />
+          </JobUrl>
+        ))}
     </Wrapper>
   )
 }

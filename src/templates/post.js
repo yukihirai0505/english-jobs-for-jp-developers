@@ -20,7 +20,8 @@ const PostTemplate = ({ data, pageContext }) => {
     publishDate,
     tags,
     englishLevel,
-    corporateUrl
+    corporateUrl,
+    jobUrls
   } = data.contentfulPost
   const postNode = data.contentfulPost
 
@@ -43,6 +44,7 @@ const PostTemplate = ({ data, pageContext }) => {
           timeToRead={body.childMarkdownRemark.timeToRead}
           englishLevel={englishLevel}
           corporateUrl={corporateUrl}
+          jobUrls={jobUrls}
         />
         <PageBody body={body} />
       </Container>
