@@ -138,5 +138,70 @@ exports.createPages = ({ graphql, actions }) => {
     })
   })
 
-  return Promise.all([loadPosts, loadTags, loadPages])
+  const loadCountryPosts = new Promise((resolve, reject) => {
+    graphql(`
+      {
+        allContentfulCountryPost(
+          limit: 10000
+        ) {
+          edges {
+            node {
+              slug
+            }
+          }
+        }
+      }
+    `).then(result => {
+      const posts = result.data.allContentfulCountryPost.edges
+      const postsPerFirstPage = config.postsPerHomePage
+      const postsPerPage = config.postsPerPage
+      const numPages = Math.ceil(
+        posts.slice(postsPerFirstPage).length / postsPerPage
+      )
+
+      // Create main home page
+      createPage({
+        path: `/countries`,
+        component: path.resolve(`./src/templates/countries.js`),
+        context: {
+          limit: postsPerFirstPage,
+          skip: 0,
+          numPages: numPages + 1,
+          currentPage: 1,
+        },
+      })
+
+      // Create additional pagination on home page if needed
+      Array.from({ length: numPages }).forEach((_, i) => {
+        createPage({
+          path: `/${i + 2}/`,
+          component: path.resolve(`./src/templates/countries.js`),
+          context: {
+            limit: postsPerPage,
+            skip: i * postsPerPage + postsPerFirstPage,
+            numPages: numPages + 1,
+            currentPage: i + 2,
+          },
+        })
+      })
+
+      // Create each individual post
+      posts.forEach((edge, i) => {
+        const prev = i === 0 ? null : posts[i - 1].node
+        const next = i === posts.length - 1 ? null : posts[i + 1].node
+        createPage({
+          path: `${edge.node.slug}/`,
+          component: path.resolve(`./src/templates/countryPost.js`),
+          context: {
+            slug: edge.node.slug,
+            prev,
+            next,
+          },
+        })
+      })
+      resolve()
+    })
+  })
+
+  return Promise.all([loadPosts, loadTags, loadPages, loadCountryPosts])
 }
